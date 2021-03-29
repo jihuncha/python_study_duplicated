@@ -46,7 +46,6 @@ class Solution:
         if fast:
             slow = slow.next
 
-
         # 팰린드롬 여부 확인
         while rev and rev.val == slow.val:
             slow, rev = slow.next, rev.next

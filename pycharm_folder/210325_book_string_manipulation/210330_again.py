@@ -79,19 +79,70 @@ from typing import Deque, List, re
 # Input: paragraph = "a.", banned = []
 # Output: "a"
 
+# paragraph = "Bob hit a ball, the hit BALL flew far after it was hit."
+# banned = ["hit"]
+# 
+# import re
+# import collections
+# class Solution:
+#     def mostCommonWord(self, paragraph: str, banned: List[str]) -> str:
+#         words = [word for word in re.sub(r'[^\w]', ' ', paragraph)
+#             .lower().split()
+#             if word not in banned]
+#         # print(words)
+# 
+#         print(collections.Counter(words).most_common(1))
+# 
+# Solution().mostCommonWord(paragraph, banned)
 
-paragraph = "Bob hit a ball, the hit BALL flew far after it was hit."
-banned = ["hit"]
+# Example 1:
+#
+# Input: strs = ["eat","tea","tan","ate","nat","bat"]
+# Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+#
+# Example 2:
+#
+# Input: strs = [""]
+# Output: [[""]]
 
-import re
-import collections
-class Solution:
-    def mostCommonWord(self, paragraph: str, banned: List[str]) -> str:
-        words = [word for word in re.sub(r'[^\w]', ' ', paragraph)
-            .lower().split()
-            if word not in banned]
-        # print(words)
+# strs = ["eat","tea","tan","ate","nat","bat"]
+# class Solution:
+#     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+#         dic = {}
+#
+#         for i in strs:
+#             temp_str = ''.join(sorted(i))
+#             print(temp_str)
+#             if temp_str not in dic:
+#                 dic[temp_str] = [i]
+#             else:
+#                 dic[temp_str].append(i)
+#         return list(dic.values())
+#
+#
+# print(Solution().groupAnagrams(strs))
 
-        print(collections.Counter(words).most_common(1))
+# Example 1:
 
-Solution().mostCommonWord(paragraph, banned)
+# Input: s = "babad"
+# Output: "bab"
+# Note: "aba" is also a valid answer.
+# Example 2:
+#
+# Input: s = "cbbd"
+# Output: "bb"
+# Example 3:
+#
+# Input: s = "a"
+# Output: "a"
+# Example 4:
+#
+# Input: s = "ac"
+# Output: "a"
+
+# import collections
+# class Solution:
+#     def longestPalindrome(self, s: str) -> str:
+#         collections.deque =
+
+

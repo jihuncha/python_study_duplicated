@@ -164,23 +164,26 @@ from typing import Deque, List, re
 #
 # print(Solution().longestPalindrome(s))
 
-s = "babad"
+s = "abcdedcbabs"
 class Solution:
     def longestPalindrome(self, s: str) -> str:
+        print(s[0:8])
         def expand(left : int, right: int) -> str:
-            print("left/right - {},{}".format(left,right))
             while left >= 0 and right < len(s) and s[left] == s[right]:
+                print(s[left], s[right])
                 left -= 1
                 right += 1
+            print("expand_result - {}".format(s[left+1:right]))
             return s[left + 1:right]
 
         if len(s) < 2 or s == s[::-1]:
             return s
 
         result = ''
+        # index 니까 -1 해줌
         for i in range(len(s) - 1):
             result = max(result, expand(i, i+1), expand(i, i+2), key=len)
-
+            print("i - {}, result - {}".format(i, result))
         return result
 
 print(Solution().longestPalindrome(s))

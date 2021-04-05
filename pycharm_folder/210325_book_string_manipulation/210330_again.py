@@ -164,26 +164,76 @@ from typing import Deque, List, re
 #
 # print(Solution().longestPalindrome(s))
 
-s = "abcdedcbabs"
+# s = "abcdedcbabs"
+# class Solution:
+#     def longestPalindrome(self, s: str) -> str:
+#         print(s[0:8])
+#         def expand(left : int, right: int) -> str:
+#             while left >= 0 and right < len(s) and s[left] == s[right]:
+#                 print(s[left], s[right])
+#                 left -= 1
+#                 right += 1
+#             print("expand_result - {}".format(s[left+1:right]))
+#             return s[left + 1:right]
+#
+#         if len(s) < 2 or s == s[::-1]:
+#             return s
+#
+#         result = ''
+#         # index 니까 -1 해줌
+#         for i in range(len(s) - 1):
+#             result = max(result, expand(i, i+1), expand(i, i+2), key=len)
+#             print("i - {}, result - {}".format(i, result))
+#         return result
+#
+# print(Solution().longestPalindrome(s))
+
+# height = [0,1,0,2,1,0,1,3,2,1,2,1]
+# Output: 6
+#
+height = [4,2,0,3,2,5]
+# Output: 9
+
 class Solution:
-    def longestPalindrome(self, s: str) -> str:
-        print(s[0:8])
-        def expand(left : int, right: int) -> str:
-            while left >= 0 and right < len(s) and s[left] == s[right]:
-                print(s[left], s[right])
-                left -= 1
-                right += 1
-            print("expand_result - {}".format(s[left+1:right]))
-            return s[left + 1:right]
+    def trap(self, height: List[int]) -> int:
+        stack = []
+        volume = 0
 
-        if len(s) < 2 or s == s[::-1]:
-            return s
+        for i in range(len(height)):
+            while stack and height[i] > height[stack[-1]]:
+                top = stack.pop()
 
-        result = ''
-        # index 니까 -1 해줌
-        for i in range(len(s) - 1):
-            result = max(result, expand(i, i+1), expand(i, i+2), key=len)
-            print("i - {}, result - {}".format(i, result))
-        return result
+            if not len(stack):
+                break
 
-print(Solution().longestPalindrome(s))
+            # ??? 이전과의 차이만큼 물 높이 처리?
+            distance = i - stack[-1] -1
+            waters = min(height[i], height[stack[-1]]) - height[top]
+
+            volume += distance * waters
+
+        stack.append(i)
+
+
+        # if not height:
+        #     return 0
+        #
+        # left, right = 0, len(height) - 1
+        # left_max, right_max = height[left], height[right]
+        # volume = 0
+        #
+        # while left < right:
+        #     if left_max < right_max:
+        #         left += 1
+        #         if left_max - height[left] > 0:
+        #             volume += left_max - height[left]
+        #         left_max = max(left_max, height[left])
+        #     else :
+        #         right -= 1
+        #         if right_max - height[right] > 0:
+        #             volume += right_max - height[right]
+        #         right_max = max(right_max, height[right])
+        #
+        # return volume
+
+print(Solution().trap(height))

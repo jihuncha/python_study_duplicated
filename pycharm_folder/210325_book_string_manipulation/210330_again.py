@@ -432,14 +432,66 @@ nums = [-1,0,1,2,-1,-4]
 # 예제 출력 1
 # 198
 
-m = int(input())
+# m = int(input())
+#
+# result = []
+# for i in range(1, m+1):
+#     temp = list(map(int, str(i)))
+#     temp_result = i + sum(temp)
+#     if temp_result == m:
+#         print(i)
+#
+#     if i == m:
+#         print(0)
 
-result = []
-for i in range(1, m+1):
-    temp = list(map(int, str(i)))
-    temp_result = i + sum(temp)
-    if temp_result == m:
-        print(i)
+head = [1,2,2,1]
+# head = [1,2]
+ # true
+# Definition for singly-linked list.
 
-    if i == m:
-        print(0)
+
+import collections
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+temp_head = ListNode(head[0])
+for i in range(1,len(head)):
+    temp_head.next = ListNode(head[i])
+    temp_head = temp_head.next
+
+print(temp_head)
+
+class Solution:
+    def isPalindrome(self, head: ListNode) -> bool:
+        # q = collections.deque()
+        #
+        # if not head:
+        #     return True
+        #
+        # while head:
+        #     q.append(head.val)
+        #     head = head.next
+        # # print(q)
+        #
+        # while len(q) > 1:
+        #     if q.popleft() != q.pop():
+        #         return False
+        #
+        # return True
+
+        rev = None
+        slow = fast = head
+        while fast and fast.next:
+            fast = fast.next.next
+            rev, rev.next, slow = slow, rev, slow.next
+        if fast:
+            slow = slow.next
+
+        while rev and rev.val == slow.val:
+            slow, rev = slow.next, rev.next
+
+        return not rev
+
+print(Solution().isPalindrome(temp_head))

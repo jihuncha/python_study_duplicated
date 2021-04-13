@@ -38,3 +38,4 @@ class Solution:
         dfs(nums)
         return results
 print(Solution().permute(nums))
+

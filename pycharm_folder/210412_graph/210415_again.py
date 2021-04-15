@@ -60,12 +60,12 @@ def bfs_iterative(v):
 # Output: 1
 # Example 2:
 #
-grid = [
-  ["1","1","0","0","0"],
-  ["1","1","0","0","0"],
-  ["0","0","1","0","0"],
-  ["0","0","0","1","1"]
-]
+# grid = [
+#   ["1","1","0","0","0"],
+#   ["1","1","0","0","0"],
+#   ["0","0","1","0","0"],
+#   ["0","0","0","1","1"]
+# ]
 # Output: 3
 
 class Solution:
@@ -95,4 +95,45 @@ class Solution:
                     count +=1
 
         return count
-print(Solution().numIslands(grid))
+# print(Solution().numIslands(grid))
+
+########################################################################################################################
+# Example 1:
+#
+digits = "23"
+# Output: ["ad","ae","af","bd","be","bf","cd","ce","cf"]
+# Example 2:
+#
+# digits = ""
+# Output: []
+# Example 3:
+#
+# digits = "2"
+# Output: ["a","b","c"]
+
+class Solution:
+    def letterCombinations(self, digits: str) -> List[str]:
+        if not digits:
+            return []
+
+        dic = {"2":"abc", "3": "def", "4":"ghi", "5":"jkl",
+               "6":"mno", "7":"pqrs", "8":"tuv", "9":"wxyz"}
+
+        result = []
+        temp_str = ""
+
+        def dfs(index, input_data):
+            # print(index, input_data)
+            if len(digits) == len(input_data):
+                result.append(input_data)
+                return
+            for i in range(index, len(digits)):
+                print(i)
+                for k in dic[digits[i]]:
+                    # print(k)
+                    dfs(i + 1, input_data + k)
+
+        dfs(0,"")
+        print(result)
+
+print(Solution().letterCombinations(digits))

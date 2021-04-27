@@ -1,17 +1,16 @@
-stack = [1,2,3,4,5]
-#
-#
-# while stack:
-#     temp = stack.pop()
-#     print(temp)
+a = 20
 
+b = a
 
-# test = [[1,2,3], [0,4,3], [2,3,4], [3,4,222]]
+a = 30
 
-# print(test[3][2])
+print(a, b)
 
-temp = ["1","2","3","4","5"]
+a_list = [1,2,3,4]
 
-# print(''.join(temp))
-# # print(str(stack))
-# print(str(stack))
+b_list = a_list
+
+a_list.append(100)
+
+print(a_list)
+print(b_list)

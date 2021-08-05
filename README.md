@@ -1,3 +1,5 @@
-# 여긴 더이상 쓰지 않아요.
+# algorithm study
+
+# not now 
 
 
